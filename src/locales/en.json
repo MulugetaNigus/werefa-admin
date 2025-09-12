@@ -1,0 +1,77 @@
+{
+  "common": {
+    "login": "Login",
+    "logout": "Logout",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "save": "Save",
+    "search": "Search",
+    "print": "Print",
+    "add": "Add",
+    "edit": "Edit",
+    "delete": "Delete"
+  },
+  "login": {
+    "title": "Werefa 4",
+    "subtitle": "Sub-district 01",
+    "username": "Username",
+    "password": "Password",
+    "loginButton": "Login"
+  },
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "residenceRenewal": "Residence Renewal",
+    "newResidence": "New Residence",
+    "deathCertificate": "Death Certificate",
+    "birthCertificate": "Birth Certificate",
+    "marriageCertificate": "Marriage Certificate",
+    "administrativeServices": "Administrative Services",
+    "corrections": "Corrections",
+    "logout": "Logout"
+  },
+  "header": {
+    "title": "Residence Renewal Management",
+    "searchPlaceholder": "Search...",
+    "year": "Year",
+    "addNewResident": "Add New Resident",
+    "print": "Print"
+  },
+  "analytics": {
+    "dashboard": "Dashboard",
+    "totalRecords": "Total Records",
+    "completedRecords": "Completed Records",
+    "pendingRecords": "Pending Records",
+    "administrativeRecords": "Administrative Records",
+    "date": "Date",
+    "total": "Total"
+  },
+  "dataTable": {
+    "id": "ID",
+    "fullName": "Full Name",
+    "residenceNumber": "Residence Number",
+    "registrationDate": "Registration Date",
+    "status": "Status",
+    "payment": "Payment",
+    "action": "Action",
+    "completed": "Completed",
+    "all": "All Records",
+    "pending": "Pending"
+  },
+  "modal": {
+    "title": "Register New Werefa 4",
+    "subtitle": "This new Werefa 4 registration section does not accept Werefa 4",
+    "fullName": "Full Name",
+    "phoneNumber": "Phone Number",
+    "gender": "Gender",
+    "male": "Male",
+    "female": "Female",
+    "identificationNumber": "Identification Number",
+    "residenceAddress": "Residence Address",
+    "serviceType": "Service Type",
+    "residenceRenewal": "Residence Renewal",
+    "newResidence": "New Residence",
+    "deathCertificate": "Death Certificate",
+    "selectDate": "Select Date",
+    "register": "Register"
+  }
+}

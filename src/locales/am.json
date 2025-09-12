@@ -1,0 +1,77 @@
+{
+  "common": {
+    "login": "ይግቡ",
+    "logout": "ይዉጡ",
+    "submit": "ይላኩ",
+    "cancel": "ይሰርዙ",
+    "save": "ያስቀምጡ",
+    "search": "ይፈሉ",
+    "print": "ያትሙ",
+    "add": "ይጨምሩ",
+    "edit": "ያርሙ",
+    "delete": "ይሰርዙ"
+  },
+  "login": {
+    "title": "ወረ4",
+    "subtitle": "ከተይለስተኛ ወረዳ 01",
+    "username": "መልእክ ስም",
+    "password": "የይለፍ ቃል",
+    "loginButton": "ይግቡ"
+  },
+  "sidebar": {
+    "dashboard": "ዳሽቦርድ",
+    "residenceRenewal": "መተወደሪ ዕድሳት",
+    "newResidence": "አዲስ መተወደሪ",
+    "deathCertificate": "የሞተ ሰርፍት",
+    "birthCertificate": "ልደት ክርሰ",
+    "marriageCertificate": "የጋበን ሰርፍት",
+    "administrativeServices": "የአተከፍግፅ ወረልዎት",
+    "corrections": "ማስተከክፅዎት",
+    "logout": "ይዉጡ"
+  },
+  "header": {
+    "title": "የመተወደሪ ዕድሳት ማስተዳደሪያ",
+    "searchPlaceholder": "ይፈሉ...",
+    "year": "የዓመ",
+    "addNewResident": "አዲስ ሞካክገ",
+    "print": "ኛስተ"
+  },
+  "analytics": {
+    "dashboard": "ዳሽቦርድ",
+    "totalRecords": "ጠቅላላ ወረ4ዎች",
+    "completedRecords": "የተሰናዳ ወረ4ዎች",
+    "pendingRecords": "ያልተሰናዳ ወረ4ዎች",
+    "administrativeRecords": "በአስተዳደር የተመዝገቡ",
+    "date": "ቀን",
+    "total": "ጠቅላላ"
+  },
+  "dataTable": {
+    "id": "ተቁ",
+    "fullName": "መሰለ ስም",
+    "residenceNumber": "ቁጥ መተወደሪ ቁ",
+    "registrationDate": "የሰፍመረብት ፋት",
+    "status": "ሞክገ",
+    "payment": "ክፍያ",
+    "action": "ሂተ",
+    "completed": "የተተተግንዴ",
+    "all": "ሁሉም ዝርዝሮች",
+    "pending": "ያልተሰናዳ"
+  },
+  "modal": {
+    "title": "አዲስ ወረ4 ይመዝግቡ",
+    "subtitle": "ልክ ይሄ አዲስ ወረ4 ለመዝግብ የሚለገኝት ክፍል ወረ4 አይቀበላም",
+    "fullName": "ሙሉ ስም",
+    "phoneNumber": "ስልክ ቁጥር",
+    "gender": "ፆታ",
+    "male": "ወንድ",
+    "female": "ሴት",
+    "identificationNumber": "መታወቂያ ቁጥር",
+    "residenceAddress": "የመተወደሪ አድራሻ",
+    "serviceType": "የአገልግሎት ዓይነት",
+    "residenceRenewal": "መተወደሪ ዕድሳት",
+    "newResidence": "አዲስ መተወደሪ",
+    "deathCertificate": "የሞተ ሰርፍት",
+    "selectDate": "ቀን ይምረጡ",
+    "register": "መዝግብ"
+  }
+}

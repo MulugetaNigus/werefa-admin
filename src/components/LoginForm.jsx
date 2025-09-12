@@ -1,16 +1,28 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import LanguageToggle from './LanguageToggle';
 
 const LoginForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Username:', username, 'Password:', password);
+    // Navigate to dashboard after login
+    navigate('/dashboard');
   };
 
   return (
     <div className="w-full max-w-md">
+      {/* Language Toggle */}
+      <div className="flex justify-end mb-8">
+        <LanguageToggle />
+      </div>
+
       {/* Main Card */}
       <div className="bg-white rounded-2xl shadow-xl p-8">
         {/* Location Icon */}
@@ -48,8 +60,8 @@ const LoginForm = () => {
 
         {/* Title */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">ወረ4</h1>
-          <p className="text-gray-600 text-sm">ከተይለስተኛ ወረዳ 01</p>
+          <h1 className="text-4xl font-bold text-gray-900 mb-2">{t('login.title')}</h1>
+          <p className="text-gray-600 text-sm">{t('login.subtitle')}</p>
         </div>
 
         {/* Form */}
@@ -57,7 +69,7 @@ const LoginForm = () => {
           {/* Username */}
           <div>
             <label className="block text-gray-700 text-sm font-medium mb-2">
-              መልእክ ስም
+              {t('login.username')}
             </label>
             <input
               type="text"
@@ -71,7 +83,7 @@ const LoginForm = () => {
           {/* Password */}
           <div>
             <label className="block text-gray-700 text-sm font-medium mb-2">
-              የይለፍ ቃል
+              {t('login.password')}
             </label>
             <input
               type="password"
@@ -87,7 +99,7 @@ const LoginForm = () => {
             type="submit"
             className="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200"
           >
-            ይግቡ
+            {t('login.loginButton')}
           </button>
         </form>
       </div>

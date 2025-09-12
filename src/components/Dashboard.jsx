@@ -70,9 +70,9 @@ const Dashboard = () => {
     <div className="min-h-screen bg-gradient-to-br from-teal-50 to-blue-50">
       <div className="flex">
         <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
-        <div className="flex-1 ml-64">
-          <Header />
-          <main className="p-6">
+        <div className="flex-1 ml-48 lg:ml-56 xl:ml-64 2xl:ml-72">
+          {activeTab !== 'ዳሽቦርድ' && <Header />}
+          <main className="p-3 sm:p-4 lg:p-6 xl:p-8 2xl:p-10">
             {activeTab === 'ዳሽቦርድ' ? (
               <Analytics />
             ) : (

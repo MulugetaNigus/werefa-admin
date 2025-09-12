@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const AddResidentModal = ({ isOpen, onClose }) => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
     gender: 'ወንድ',
     identificationId: '',
     address: '',
-    addressType: 'መተወደሪ ዕድሳት'
+    addressType: 'መተወደሪ ዕድሳት',
+    selectedDate: new Date()
   });
 
   const handleInputChange = (field, value) => {
@@ -25,148 +28,138 @@ const AddResidentModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50">
-      <div className="bg-white rounded-lg shadow-xl w-full max-w-lg mx-4">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+      <div className="bg-white rounded-lg p-4 lg:p-6 w-full max-w-sm lg:max-w-md xl:max-w-lg mx-4">
         {/* Header */}
-        <div className="px-6 py-4">
-          <h2 className="text-xl font-bold text-black text-center mb-2">አዲስ ወረ4 ይመዝግቡ</h2>
-          <p className="text-sm text-gray-600 text-center">
-            ልክ ይሄ አዲስ ወረ4 ለመዝግብ የሚለገኝት ክፍል ወረ4 አይቀበላም
+        <div className="px-3 lg:px-6 py-3 lg:py-4">
+          <h2 className="text-lg lg:text-xl font-bold text-black text-center mb-2">{t('modal.title')}</h2>
+          <p className="text-xs lg:text-sm text-gray-600 text-center">
+            {t('modal.subtitle')}
           </p>
         </div>
 
         {/* Form Content */}
-        <div className="px-6 pb-6">
+        <div className="px-3 lg:px-6 pb-4 lg:pb-6">
           {/* Name and Phone Fields - Side by Side */}
-          <div className="grid grid-cols-2 gap-4 mb-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-4 mb-3 lg:mb-4">
             <div>
-              <label className="block text-gray-700 text-sm font-medium mb-2">
-                ሙሉ ስም
-              </label>
+              <label className="block text-xs lg:text-sm font-medium text-gray-700 mb-1">{t('modal.fullName')}</label>
               <input
                 type="text"
-                value={formData.name}
-                onChange={(e) => handleInputChange('name', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                value={formData.fullName}
+                onChange={(e) => handleInputChange('fullName', e.target.value)}
+                className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
             <div>
-              <label className="block text-gray-700 text-sm font-medium mb-2">
-                ስልክ ቁጥር
-              </label>
+              <label className="block text-xs lg:text-sm font-medium text-gray-700 mb-1">{t('modal.phoneNumber')}</label>
               <input
-                type="text"
-                value={formData.phone}
-                onChange={(e) => handleInputChange('phone', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                type="tel"
+                value={formData.phoneNumber}
+                onChange={(e) => handleInputChange('phoneNumber', e.target.value)}
+                className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
           </div>
 
           {/* Gender Selection and ID Field - Side by Side */}
-          <div className="grid grid-cols-2 gap-4 mb-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-4 mb-3 lg:mb-4">
             <div>
-              <label className="block text-gray-700 text-sm font-medium mb-2">
-                ፆታ
-              </label>
-              <div className="flex space-x-6">
+              <label className="block text-xs lg:text-sm font-medium text-gray-700 mb-2">{t('modal.gender')}</label>
+              <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4">
                 <label className="flex items-center">
                   <input
                     type="radio"
                     name="gender"
-                    value="ወንድ"
-                    checked={formData.gender === 'ወንድ'}
+                    value="male"
+                    checked={formData.gender === 'male'}
                     onChange={(e) => handleInputChange('gender', e.target.value)}
-                    className="mr-2 w-4 h-4 text-blue-500"
+                    className="mr-2"
                   />
-                  <span className="text-sm">ወንድ</span>
+                  <span className="text-sm">{t('modal.male')}</span>
                 </label>
                 <label className="flex items-center">
                   <input
                     type="radio"
                     name="gender"
-                    value="ሴት"
-                    checked={formData.gender === 'ሴት'}
+                    value="female"
+                    checked={formData.gender === 'female'}
                     onChange={(e) => handleInputChange('gender', e.target.value)}
-                    className="mr-2 w-4 h-4 text-blue-500"
+                    className="mr-2"
                   />
-                  <span className="text-sm">ሴት</span>
+                  <span className="text-sm">{t('modal.female')}</span>
                 </label>
               </div>
             </div>
             <div>
-              <label className="block text-gray-700 text-sm font-medium mb-2">
-                የመተወደሪ ቁጥር
+              <label className="block text-gray-700 text-xs lg:text-sm font-medium mb-2">
+                {t('modal.identificationNumber')}
               </label>
               <input
                 type="text"
                 value={formData.identificationId}
                 onChange={(e) => handleInputChange('identificationId', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
           </div>
 
           {/* Address Field */}
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-medium mb-2">
-              የመተወደሪ ቦታ
+          <div className="mb-3 lg:mb-4">
+            <label className="block text-gray-700 text-xs lg:text-sm font-medium mb-2">
+              {t('modal.residenceAddress')}
             </label>
             <input
               type="text"
-              value={formData.address}
-              onChange={(e) => handleInputChange('address', e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              value={formData.residenceAddress}
+              onChange={(e) => handleInputChange('residenceAddress', e.target.value)}
+              className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
 
-          {/* Address Type */}
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-medium mb-2">
-              አገልግሎት
-            </label>
-            <select
-              value={formData.addressType}
-              onChange={(e) => handleInputChange('addressType', e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"
-            >
-              <option value="መተወደሪ ዕድሳት">መተወደሪ ዕድሳት</option>
-              <option value="አዲስ መተወደሪ">አዲስ መተወደሪ</option>
-              <option value="የሞተ ሰርፍት">የሞተ ሰርፍት</option>
-            </select>
-          </div>
-
-          {/* Date Selection */}
-          <div className="mb-6">
-            <label className="block text-gray-700 text-sm font-medium mb-2">
-              የወረ4 ቀን
-            </label>
-            <div className="grid grid-cols-5 gap-2">
-              <button className="bg-blue-500 text-white px-4 py-3 rounded text-sm font-medium">
-                የዛሬ
-              </button>
-              <button className="bg-gray-300 text-gray-700 px-4 py-3 rounded text-sm">
-                12
-              </button>
-              <button className="bg-gray-300 text-gray-700 px-4 py-3 rounded text-sm">
-                13
-              </button>
-              <button className="bg-gray-300 text-gray-700 px-4 py-3 rounded text-sm">
-                14
-              </button>
-              <button className="bg-gray-300 text-gray-700 px-4 py-3 rounded text-sm">
-                15
-              </button>
+          {/* Service Type and Date - Side by Side */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-4 mb-4 lg:mb-6">
+            <div>
+              <label className="block text-gray-700 text-xs lg:text-sm font-medium mb-2">
+                {t('modal.serviceType')}
+              </label>
+              <select
+                value={formData.serviceType}
+                onChange={(e) => handleInputChange('serviceType', e.target.value)}
+                className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                <option value="">{t('modal.selectService')}</option>
+                <option value="residence">{t('modal.residenceService')}</option>
+                <option value="renewal">{t('modal.renewalService')}</option>
+                <option value="certificate">{t('modal.certificateService')}</option>
+              </select>
+            </div>
+            <div>
+              <label className="block text-gray-700 text-xs lg:text-sm font-medium mb-2">
+                {t('modal.selectDate')}
+              </label>
+              <input
+                type="date"
+                value={formData.selectedDate.toISOString().split('T')[0]}
+                onChange={(e) => handleInputChange('selectedDate', new Date(e.target.value))}
+                className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
             </div>
           </div>
 
           {/* Submit Button */}
-          <div className="text-center">
+          <div className="flex flex-col sm:flex-row justify-end space-y-2 sm:space-y-0 sm:space-x-3">
+            <button
+              onClick={onClose}
+              className="px-3 lg:px-4 py-2 text-sm text-gray-600 border border-gray-300 rounded-md hover:bg-gray-50"
+            >
+              Cancel
+            </button>
             <button
               onClick={handleSubmit}
-              className="bg-blue-500 hover:bg-blue-600 text-white font-medium py-3 px-8 rounded-md transition-colors"
+              className="px-4 lg:px-6 py-2 text-sm bg-blue-500 text-white rounded-md hover:bg-blue-600"
             >
-              መዝግብ
+              {t('modal.submit')}
             </button>
           </div>
         </div>

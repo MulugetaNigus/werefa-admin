@@ -1,27 +1,31 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+import LanguageToggle from './LanguageToggle';
 
 const Analytics = () => {
+  const { t } = useTranslation();
+  
   const statsData = [
     {
-      title: 'ጠቅላላ ወረ4ዎች',
+      title: t('analytics.totalRecords'),
       value: '34',
       icon: '📊',
       color: 'bg-blue-500'
     },
     {
-      title: 'የተሰናዳ ወረ4ዎች',
+      title: t('analytics.completedRecords'),
       value: '10',
       icon: '❤️',
       color: 'bg-red-500'
     },
     {
-      title: 'ያልተሰናዳ ወረ4ዎች',
+      title: t('analytics.pendingRecords'),
       value: '20',
       icon: '✈️',
       color: 'bg-green-500'
     },
     {
-      title: 'በአስተዳደር የተመዝገቡ',
+      title: t('analytics.administrativeRecords'),
       value: '4',
       icon: '🔍',
       color: 'bg-purple-500'
@@ -46,18 +50,22 @@ const Analytics = () => {
 
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-bold text-gray-900 mb-6">ዳሽቦርድ</h2>
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-2xl font-bold text-gray-900">{t('analytics.dashboard')}</h2>
+        <LanguageToggle />
+      </div>
+      
       
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-3 lg:gap-4 xl:gap-6 mb-6 xl:mb-8">
         {statsData.map((stat, index) => (
-          <div key={index} className={`${stat.color} rounded-lg p-6 text-white`}>
+          <div key={index} className={`${stat.color} rounded-lg p-3 lg:p-4 xl:p-6 text-white`}>
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-white/80 text-sm">{stat.title}</p>
-                <p className="text-3xl font-bold mt-2">{stat.value}</p>
+                <p className="text-white/80 text-xs lg:text-sm">{stat.title}</p>
+                <p className="text-xl lg:text-2xl xl:text-3xl font-bold mt-1 lg:mt-2">{stat.value}</p>
               </div>
-              <div className="text-3xl opacity-80">
+              <div className="text-xl lg:text-2xl xl:text-3xl opacity-80">
                 {stat.icon}
               </div>
             </div>
@@ -65,9 +73,9 @@ const Analytics = () => {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 lg:gap-6 xl:gap-8">
         {/* Chart Section */}
-        <div className="bg-white rounded-lg shadow-sm p-6">
+        <div className="bg-white rounded-lg shadow-sm p-3 lg:p-4 xl:p-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">በዓመት ሪፖርት</h3>
           <div className="relative h-64">
             <svg className="w-full h-full" viewBox="0 0 400 200">
@@ -122,26 +130,26 @@ const Analytics = () => {
         </div>
 
         {/* Data Table */}
-        <div className="bg-white rounded-lg shadow-sm p-6">
+        <div className="bg-white rounded-lg shadow-sm p-3 lg:p-4 xl:p-6">
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
                 <tr className="border-b">
-                  <th className="text-left py-3 px-2 text-sm font-medium text-gray-700">ቀን</th>
-                  <th className="text-center py-3 px-2 text-sm font-medium text-blue-600">የተሰናዳ ወረ4ዎች</th>
-                  <th className="text-center py-3 px-2 text-sm font-medium text-green-600">ያልተሰናዳ ወረ4ዎች</th>
-                  <th className="text-center py-3 px-2 text-sm font-medium text-purple-600">በአስተዳደር የተመዝገቡ</th>
-                  <th className="text-center py-3 px-2 text-sm font-medium text-blue-600">ጠቅላላ</th>
+                  <th className="text-left py-2 lg:py-3 px-1 lg:px-2 text-xs lg:text-sm font-medium text-gray-700">{t('analytics.date')}</th>
+                  <th className="text-center py-2 lg:py-3 px-1 lg:px-2 text-xs lg:text-sm font-medium text-blue-600">{t('analytics.completedRecords')}</th>
+                  <th className="text-center py-2 lg:py-3 px-1 lg:px-2 text-xs lg:text-sm font-medium text-green-600">{t('analytics.pendingRecords')}</th>
+                  <th className="text-center py-2 lg:py-3 px-1 lg:px-2 text-xs lg:text-sm font-medium text-purple-600">{t('analytics.administrativeRecords')}</th>
+                  <th className="text-center py-2 lg:py-3 px-1 lg:px-2 text-xs lg:text-sm font-medium text-blue-600">{t('analytics.total')}</th>
                 </tr>
               </thead>
               <tbody>
                 {tableData.map((row, index) => (
                   <tr key={index} className="border-b border-gray-100">
-                    <td className="py-3 px-2 text-sm text-gray-900">{row.month}</td>
-                    <td className="py-3 px-2 text-sm text-center text-blue-600 font-medium">{row.completed}</td>
-                    <td className="py-3 px-2 text-sm text-center text-green-600 font-medium">{row.pending}</td>
-                    <td className="py-3 px-2 text-sm text-center text-purple-600 font-medium">{row.processing}</td>
-                    <td className="py-3 px-2 text-sm text-center text-blue-600 font-medium">{row.total}</td>
+                    <td className="py-2 lg:py-3 px-1 lg:px-2 text-xs lg:text-sm text-gray-900">{row.month}</td>
+                    <td className="py-2 lg:py-3 px-1 lg:px-2 text-xs lg:text-sm text-center text-blue-600 font-medium">{row.completed}</td>
+                    <td className="py-2 lg:py-3 px-1 lg:px-2 text-xs lg:text-sm text-center text-green-600 font-medium">{row.pending}</td>
+                    <td className="py-2 lg:py-3 px-1 lg:px-2 text-xs lg:text-sm text-center text-purple-600 font-medium">{row.processing}</td>
+                    <td className="py-2 lg:py-3 px-1 lg:px-2 text-xs lg:text-sm text-center text-blue-600 font-medium">{row.total}</td>
                   </tr>
                 ))}
               </tbody>
