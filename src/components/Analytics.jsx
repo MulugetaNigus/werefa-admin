@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { BarChart3, Heart, Plane, Search, CircleCheckBig, Ellipsis, UserRoundPen } from 'lucide-react';
 import LanguageToggle from './LanguageToggle';
 
 const Analytics = () => {
@@ -9,25 +10,25 @@ const Analytics = () => {
     {
       title: t('analytics.totalRecords'),
       value: '34',
-      icon: '📊',
+      icon: BarChart3,
       color: 'bg-blue-500'
     },
     {
       title: t('analytics.completedRecords'),
       value: '10',
-      icon: '❤️',
+      icon: CircleCheckBig,
       color: 'bg-red-500'
     },
     {
       title: t('analytics.pendingRecords'),
       value: '20',
-      icon: '✈️',
+      icon: Ellipsis,
       color: 'bg-green-500'
     },
     {
       title: t('analytics.administrativeRecords'),
       value: '4',
-      icon: '🔍',
+      icon: UserRoundPen,
       color: 'bg-purple-500'
     }
   ];
@@ -59,14 +60,14 @@ const Analytics = () => {
       {/* Stats Cards */}
       <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-3 lg:gap-4 xl:gap-6 mb-6 xl:mb-8">
         {statsData.map((stat, index) => (
-          <div key={index} className={`${stat.color} rounded-lg p-3 lg:p-4 xl:p-6 text-white`}>
+          <div key={index} className={`${stat.color} text-white p-4 lg:p-6 rounded-lg shadow-lg`}>
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-white/80 text-xs lg:text-sm font-bold">{stat.title}</p>
-                <p className="text-xl lg:text-2xl xl:text-3xl font-bold mt-1 lg:mt-2">{stat.value}</p>
+                <p className="text-xs lg:text-sm opacity-90 font-bold">{stat.title}</p>
+                <p className="text-xl lg:text-2xl xl:text-3xl font-bold mt-1">{stat.value}</p>
               </div>
-              <div className="text-xl lg:text-2xl xl:text-3xl opacity-80">
-                {stat.icon}
+              <div className="opacity-80">
+                <stat.icon className="w-8 h-8 lg:w-10 lg:h-10 xl:w-12 xl:h-12" />
               </div>
             </div>
           </div>
@@ -209,7 +210,7 @@ const Analytics = () => {
                     bgColor: 'bg-blue-50'
                   },
                   {
-                    label: 'ነቅ',
+                    label: 'Telebirr',
                     value: totalPending,
                     percentage: ((totalPending / grandTotal) * 100).toFixed(1),
                     color: 'bg-yellow-500',

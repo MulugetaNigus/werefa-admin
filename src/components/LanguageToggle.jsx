@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const LanguageToggle = () => {
   const { i18n } = useTranslation();
 
+  // Load language preference from localStorage on component mount
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem('werefa-language');
+    if (savedLanguage && (savedLanguage === 'am' || savedLanguage === 'en')) {
+      i18n.changeLanguage(savedLanguage);
+    }
+  }, [i18n]);
+
   const toggleLanguage = () => {
     const newLang = i18n.language === 'am' ? 'en' : 'am';
     i18n.changeLanguage(newLang);
+    // Save language preference to localStorage
+    localStorage.setItem('werefa-language', newLang);
   };
 
   return (

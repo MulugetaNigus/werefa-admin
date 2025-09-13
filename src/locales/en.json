@@ -12,7 +12,7 @@
     "delete": "Delete"
   },
   "login": {
-    "title": "Werefa 4",
+    "title": "Werefa",
     "subtitle": "Sub-district 01",
     "username": "Username",
     "password": "Password",
@@ -94,8 +94,8 @@
     "lastPage": "Last Page"
   },
   "modal": {
-    "title": "Register New Werefa 4",
-    "subtitle": "This new Werefa 4 registration section does not accept Werefa 4",
+    "title": "Register New Werefa",
+    "subtitle": "Please note that when registering a new queue, the service fee queue will not be accepted.",
     "fullName": "Full Name",
     "phoneNumber": "Phone Number",
     "gender": "Gender",

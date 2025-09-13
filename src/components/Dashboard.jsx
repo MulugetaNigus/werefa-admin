@@ -31,7 +31,7 @@ const Dashboard = () => {
         name: 'ታጣቅ ሙሉኮነ አያለ',
         code: 'ወ 001-2015/09/17/3415',
         date: '16/2017',
-        status: 'ነቅ',
+        status: 'Telebirr',
         action: 'ተከፍላል'
       },
       {
@@ -39,7 +39,7 @@ const Dashboard = () => {
         name: 'አበበ ታደሰ አያለ',
         code: 'ወ 001-2015/09/17/3415',
         date: '16/2017',
-        status: 'ነቅ',
+        status: 'Telebirr',
         action: 'ተከፍላል'
       },
       {
@@ -47,7 +47,7 @@ const Dashboard = () => {
         name: 'ታጣቅ ሙሉኮነ አያለ',
         code: 'ወ 001-2015/09/17/3415',
         date: '16/2017',
-        status: 'ነቅ',
+        status: 'Telebirr',
         action: 'ተከፍላል'
       },
       {
@@ -55,7 +55,7 @@ const Dashboard = () => {
         name: 'ታጣቅ ሙሉኮነ አያለ',
         code: 'ወ 001-2015/09/17/3415',
         date: '16/2017',
-        status: 'ነቅ',
+        status: 'Telebirr',
         action: 'ተከፍላል'
       },
       {
@@ -63,7 +63,7 @@ const Dashboard = () => {
         name: 'አበበ ታደሰ አያለ',
         code: 'ወ 001-2015/09/17/3415',
         date: '16/2017',
-        status: 'ነቅ',
+        status: 'Telebirr',
         action: 'ተከፍላል'
       },
       {
@@ -71,7 +71,7 @@ const Dashboard = () => {
         name: 'ታጣቅ ሙሉኮነ አያለ',
         code: 'ወ 001-2015/09/17/3415',
         date: '16/2017',
-        status: 'ከአለተደር',
+        status: 'ከአስተዳደር',
         action: 'ተከፍላል'
       },
       {
@@ -79,7 +79,7 @@ const Dashboard = () => {
         name: 'ታጣቅ ሙሉኮነ አያለ',
         code: 'ወ 001-2015/09/17/3415',
         date: '16/2017',
-        status: 'ነቅ',
+        status: 'Telebirr',
         action: 'ተከፍላል'
       }
     ],
@@ -89,7 +89,7 @@ const Dashboard = () => {
         name: 'ሰላማዊት ተስፋዬ ገብሬ',
         code: 'ወ 002-2015/09/18/4521',
         date: '17/2017',
-        status: 'ነቅ',
+        status: 'Telebirr',
         action: 'ተከፍላል'
       },
       {
@@ -97,7 +97,7 @@ const Dashboard = () => {
         name: 'ዳንኤል አለማየሁ ወልደ',
         code: 'ወ 002-2015/09/18/4522',
         date: '17/2017',
-        status: 'ነቅ',
+        status: 'Telebirr',
         action: 'ተከፍላል'
       },
       {
@@ -105,7 +105,7 @@ const Dashboard = () => {
         name: 'ብርሃን ተክሌ መንግስቱ',
         code: 'ወ 002-2015/09/18/4523',
         date: '17/2017',
-        status: 'ከአለተደር',
+        status: 'ከአስተዳደር',
         action: 'ተከፍላል'
       },
       {
@@ -113,7 +113,7 @@ const Dashboard = () => {
         name: 'ፍቅርቲ ሃይሌ ሰለሞን',
         code: 'ወ 002-2015/09/18/4524',
         date: '17/2017',
-        status: 'ነቅ',
+        status: 'Telebirr',
         action: 'ተከፍላል'
       },
       {
@@ -121,7 +121,7 @@ const Dashboard = () => {
         name: 'ሚካኤል ዮሐንስ አበበ',
         code: 'ወ 002-2015/09/18/4525',
         date: '17/2017',
-        status: 'ነቅ',
+        status: 'Telebirr',
         action: 'ተከፍላል'
       }
     ],
@@ -131,7 +131,7 @@ const Dashboard = () => {
         name: 'አስቴር ወንድሙ ታደሰ',
         code: 'ወ 003-2015/09/19/5631',
         date: '18/2017',
-        status: 'ነቅ',
+        status: 'Telebirr',
         action: 'ተከፍላል'
       },
       {
@@ -139,7 +139,7 @@ const Dashboard = () => {
         name: 'ገብሬ ክርስቶስ ሙሉኮነ',
         code: 'ወ 003-2015/09/19/5632',
         date: '18/2017',
-        status: 'ከአለተደር',
+        status: 'ከአስተዳደር',
         action: 'ተከፍላል'
       },
       {
@@ -147,7 +147,7 @@ const Dashboard = () => {
         name: 'ሄኖክ ተሾመ አለማየሁ',
         code: 'ወ 003-2015/09/19/5633',
         date: '18/2017',
-        status: 'ነቅ',
+        status: 'Telebirr',
         action: 'ተከፍላል'
       },
       {
@@ -155,7 +155,7 @@ const Dashboard = () => {
         name: 'ወይዘሮ ዘይነብ አሕመድ',
         code: 'ወ 003-2015/09/19/5634',
         date: '18/2017',
-        status: 'ነቅ',
+        status: 'Telebirr',
         action: 'ተከፍላል'
       }
     ],
@@ -165,7 +165,7 @@ const Dashboard = () => {
         name: 'ሳራ ዮሐንስ ተክሌ',
         code: 'ወ 004-2015/09/20/6741',
         date: '19/2017',
-        status: 'ነቅ',
+        status: 'Telebirr',
         action: 'ተከፍላል'
       },
       {
@@ -173,7 +173,7 @@ const Dashboard = () => {
         name: 'ዮሴፍ ሃይሌ ገብሬ',
         code: 'ወ 004-2015/09/20/6742',
         date: '19/2017',
-        status: 'ነቅ',
+        status: 'Telebirr',
         action: 'ተከፍላል'
       },
       {
@@ -181,7 +181,7 @@ const Dashboard = () => {
         name: 'ሩት አበበ ወልደ',
         code: 'ወ 004-2015/09/20/6743',
         date: '19/2017',
-        status: 'ከአለተደር',
+        status: 'ከአስተዳደር',
         action: 'ተከፍላል'
       },
       {
@@ -189,7 +189,7 @@ const Dashboard = () => {
         name: 'ሳሙኤል ተስፋዬ ሙሉኮነ',
         code: 'ወ 004-2015/09/20/6744',
         date: '19/2017',
-        status: 'ነቅ',
+        status: 'Telebirr',
         action: 'ተከፍላል'
       },
       {
@@ -197,7 +197,7 @@ const Dashboard = () => {
         name: 'ሊዲያ ክርስቶስ አለማየሁ',
         code: 'ወ 004-2015/09/20/6745',
         date: '19/2017',
-        status: 'ነቅ',
+        status: 'Telebirr',
         action: 'ተከፍላል'
       },
       {
@@ -205,7 +205,7 @@ const Dashboard = () => {
         name: 'እስራኤል ሃይሌ ታደሰ',
         code: 'ወ 004-2015/09/20/6746',
         date: '19/2017',
-        status: 'ነቅ',
+        status: 'Telebirr',
         action: 'ተከፍላል'
       }
     ],
@@ -215,7 +215,7 @@ const Dashboard = () => {
         name: 'ሄለን ወንድሙ ገብሬ',
         code: 'ወ 005-2015/09/21/7851',
         date: '20/2017',
-        status: 'ነቅ',
+        status: 'Telebirr',
         action: 'ተከፍላል'
       },
       {
@@ -223,7 +223,7 @@ const Dashboard = () => {
         name: 'ዳዊት ተሾመ ክርስቶስ',
         code: 'ወ 005-2015/09/21/7852',
         date: '20/2017',
-        status: 'ነቅ',
+        status: 'Telebirr',
         action: 'ተከፍላል'
       },
       {
@@ -231,7 +231,7 @@ const Dashboard = () => {
         name: 'ሪቤቃ አሕመድ ሙሉኮነ',
         code: 'ወ 005-2015/09/21/7853',
         date: '20/2017',
-        status: 'ከአለተደር',
+        status: 'ከአስተዳደር',
         action: 'ተከፍላል'
       },
       {
@@ -239,7 +239,7 @@ const Dashboard = () => {
         name: 'ናትናኤል ዮሐንስ ወልደ',
         code: 'ወ 005-2015/09/21/7854',
         date: '20/2017',
-        status: 'ነቅ',
+        status: 'Telebirr',
         action: 'ተከፍላል'
       }
     ],
@@ -249,7 +249,7 @@ const Dashboard = () => {
         name: 'ማርታ ተስፋዬ አለማየሁ',
         code: 'ወ 006-2015/09/22/8961',
         date: '21/2017',
-        status: 'ነቅ',
+        status: 'Telebirr',
         action: 'ተከፍላል'
       },
       {
@@ -257,7 +257,7 @@ const Dashboard = () => {
         name: 'ሰሎሞን ሃይሌ ታደሰ',
         code: 'ወ 006-2015/09/22/8962',
         date: '21/2017',
-        status: 'ነቅ',
+        status: 'Telebirr',
         action: 'ተከፍላል'
       },
       {
@@ -265,7 +265,7 @@ const Dashboard = () => {
         name: 'ደብራ ወንድሙ ገብሬ',
         code: 'ወ 006-2015/09/22/8963',
         date: '21/2017',
-        status: 'ነቅ',
+        status: 'Telebirr',
         action: 'ተከፍላል'
       },
       {
@@ -273,7 +273,7 @@ const Dashboard = () => {
         name: 'ገነት ክርስቶስ ሙሉኮነ',
         code: 'ወ 006-2015/09/22/8964',
         date: '21/2017',
-        status: 'ከአለተደር',
+        status: 'ከአስተዳደር',
         action: 'ተከፍላል'
       },
       {
@@ -281,7 +281,7 @@ const Dashboard = () => {
         name: 'ኤልያስ ተሾመ ወልደ',
         code: 'ወ 006-2015/09/22/8965',
         date: '21/2017',
-        status: 'ነቅ',
+        status: 'Telebirr',
         action: 'ተከፍላል'
       }
     ],
@@ -291,7 +291,7 @@ const Dashboard = () => {
         name: 'ራሄል አሕመድ አለማየሁ',
         code: 'ወ 007-2015/09/23/9071',
         date: '22/2017',
-        status: 'ነቅ',
+        status: 'Telebirr',
         action: 'ተከፍላል'
       },
       {
@@ -299,7 +299,7 @@ const Dashboard = () => {
         name: 'ሙሴ ዮሐንስ ታደሰ',
         code: 'ወ 007-2015/09/23/9072',
         date: '22/2017',
-        status: 'ከአለተደር',
+        status: 'ከአስተዳደር',
         action: 'ተከፍላል'
       },
       {
@@ -307,7 +307,7 @@ const Dashboard = () => {
         name: 'ሀና ተስፋዬ ገብሬ',
         code: 'ወ 007-2015/09/23/9073',
         date: '22/2017',
-        status: 'ነቅ',
+        status: 'Telebirr',
         action: 'ተከፍላል'
       },
       {
@@ -315,7 +315,7 @@ const Dashboard = () => {
         name: 'አብርሃም ሃይሌ ሙሉኮነ',
         code: 'ወ 007-2015/09/23/9074',
         date: '22/2017',
-        status: 'ነቅ',
+        status: 'Telebirr',
         action: 'ተከፍላል'
       },
       {
@@ -323,7 +323,7 @@ const Dashboard = () => {
         name: 'ሳባ ወንድሙ ክርስቶስ',
         code: 'ወ 007-2015/09/23/9075',
         date: '22/2017',
-        status: 'ነቅ',
+        status: 'Telebirr',
         action: 'ተከፍላል'
       },
       {
@@ -331,7 +331,7 @@ const Dashboard = () => {
         name: 'ዮናታን ተሾመ ወልደ',
         code: 'ወ 007-2015/09/23/9076',
         date: '22/2017',
-        status: 'ነቅ',
+        status: 'Telebirr',
         action: 'ተከፍላል'
       }
     ]

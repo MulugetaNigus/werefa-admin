@@ -1,20 +1,33 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { 
+  BarChart3, 
+  RotateCcw, 
+  Plus, 
+  FileText, 
+  Baby, 
+  Heart, 
+  Settings, 
+  Edit3, 
+  LogOut,
+  ChevronLeft,
+  ChevronRight
+} from 'lucide-react';
 
 const Sidebar = ({ activeTab, setActiveTab, isCollapsed, setIsCollapsed }) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
   const menuItems = [
-    { id: 'ዳሽቦርድ', label: t('sidebar.dashboard'), icon: '📊', active: false },
-    { id: 'መተወደሪ ዕድሳት', label: t('sidebar.residenceRenewal'), icon: '🔄', active: true },
-    { id: 'አዲስ መተወደሪ', label: t('sidebar.newResidence'), icon: '➕', active: false },
-    { id: 'የሞተ ሰርፍት', label: t('sidebar.deathCertificate'), icon: '📄', active: false },
-    { id: 'ልደት ክርሰ', label: t('sidebar.birthCertificate'), icon: '👶', active: false },
-    { id: 'የጋበን ሰርፍት', label: t('sidebar.marriageCertificate'), icon: '💒', active: false },
-    { id: 'የአተከፍግፅ ወረልዎት', label: t('sidebar.administrativeServices'), icon: '⚙️', active: false },
-    { id: 'ማስተከክፅዎት', label: t('sidebar.corrections'), icon: '✏️', active: false }
+    { id: 'ዳሽቦርድ', label: t('sidebar.dashboard'), icon: BarChart3, active: false },
+    { id: 'መተወደሪ ዕድሳት', label: t('sidebar.residenceRenewal'), icon: RotateCcw, active: true },
+    { id: 'አዲስ መተወደሪ', label: t('sidebar.newResidence'), icon: Plus, active: false },
+    { id: 'የሞተ ሰርፍት', label: t('sidebar.deathCertificate'), icon: FileText, active: false },
+    { id: 'ልደት ክርሰ', label: t('sidebar.birthCertificate'), icon: Baby, active: false },
+    { id: 'የጋበን ሰርፍት', label: t('sidebar.marriageCertificate'), icon: Heart, active: false },
+    { id: 'የአተከፍግፅ ወረልዎት', label: t('sidebar.administrativeServices'), icon: Settings, active: false },
+    { id: 'ማስተከክፅዎት', label: t('sidebar.corrections'), icon: Edit3, active: false }
   ];
 
   return (
@@ -38,14 +51,11 @@ const Sidebar = ({ activeTab, setActiveTab, isCollapsed, setIsCollapsed }) => {
             className="p-1.5 rounded-lg hover:bg-gray-100 transition-colors duration-200 text-gray-600 hover:text-gray-900"
             aria-label={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
           >
-            <svg 
-              className={`w-5 h-5 transition-transform duration-300 ${isCollapsed ? 'rotate-180' : ''}`} 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 19l-7-7 7-7m8 14l-7-7 7-7" />
-            </svg>
+            {isCollapsed ? (
+              <ChevronRight className="w-5 h-5 transition-transform duration-300" />
+            ) : (
+              <ChevronLeft className="w-5 h-5 transition-transform duration-300" />
+            )}
           </button>
         </div>
 
@@ -65,9 +75,7 @@ const Sidebar = ({ activeTab, setActiveTab, isCollapsed, setIsCollapsed }) => {
               }`}
               title={isCollapsed ? item.label : ''}
             >
-              <span className={`text-lg ${isCollapsed ? '' : 'mr-2 lg:mr-3'}`}>
-                {item.icon}
-              </span>
+              <item.icon className={`w-5 h-5 ${isCollapsed ? '' : 'mr-2 lg:mr-3'}`} />
               <span className={`text-xs lg:text-sm xl:text-sm transition-all duration-300 ${
                 isCollapsed 
                   ? 'opacity-0 w-0 overflow-hidden' 
@@ -89,7 +97,7 @@ const Sidebar = ({ activeTab, setActiveTab, isCollapsed, setIsCollapsed }) => {
             }`}
             title={isCollapsed ? t('sidebar.logout') : ''}
           >
-            <span className={`text-lg ${isCollapsed ? '' : 'mr-1 lg:mr-2'}`}>📋</span>
+            <LogOut className={`w-5 h-5 ${isCollapsed ? '' : 'mr-1 lg:mr-2'}`} />
             <span className={`text-xs lg:text-sm transition-all duration-300 ${
               isCollapsed 
                 ? 'opacity-0 w-0 overflow-hidden' 

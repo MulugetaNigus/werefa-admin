@@ -1,3 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* Nokia Plus Headline font for Amharic */
+@font-face {
+  font-family: 'Nokia Plus Headline';
+  src: url('https://fonts.cdnfonts.com/css/nokia-plus-headline') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  /* Amharic font styling */
+  .font-amharic {
+    font-family: 'Nokia Plus Headline', 'Noto Sans Ethiopic', 'Abyssinica SIL', serif;
+  }
+  
+  /* English font styling */
+  .font-english {
+    font-family: 'Inter', sans-serif;
+  }
+}

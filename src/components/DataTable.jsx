@@ -1,8 +1,12 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Search, ArrowUp, ArrowDown, FileText, Trash2, Check, X, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, UserPlus, Printer } from 'lucide-react';
+import { useLanguageContext } from '../contexts/LanguageContext';
+import AddResidentModal from './AddResidentModal';
 
 const DataTable = ({ data, loading = false }) => {
   const { t } = useTranslation();
+  const { currentLanguage } = useLanguageContext();
   
   // State management
   const [selectedRows, setSelectedRows] = useState(new Set());
@@ -14,6 +18,7 @@ const DataTable = ({ data, loading = false }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [columnFilters, setColumnFilters] = useState({});
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   // Debounce search term
   useEffect(() => {
@@ -133,11 +138,11 @@ const DataTable = ({ data, loading = false }) => {
 
   const SortIcon = ({ column }) => {
     if (sortConfig.key !== column) {
-      return <span className="text-gray-400">↕️</span>;
+      return <ArrowUp className="w-3 h-3 text-gray-400 opacity-50" />;
     }
     return sortConfig.direction === 'asc' ? 
-      <span className="text-blue-500">↑</span> : 
-      <span className="text-blue-500">↓</span>;
+      <ArrowUp className="w-3 h-3 text-blue-500" /> : 
+      <ArrowDown className="w-3 h-3 text-blue-500" />;
   };
 
   return (
@@ -146,8 +151,8 @@ const DataTable = ({ data, loading = false }) => {
       <div className="px-3 lg:px-4 xl:px-6 py-3 lg:py-4 bg-gray-50 border-b space-y-4">
         <div className="p-4 border-b border-gray-200">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-            {/* Search and Filters */}
-            <div className="flex flex-col sm:flex-row gap-3">
+            {/* Left Side: Search Filters and Items per page */}
+            <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center">
               <div className="relative">
                 <input
                   type="text"
@@ -156,28 +161,43 @@ const DataTable = ({ data, loading = false }) => {
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-full sm:w-64 font-bold"
                 />
-                <svg className="w-5 h-5 text-gray-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
+                <Search className="w-5 h-5 text-gray-400 absolute left-3 top-2.5" />
+              </div>
+              
+              {/* Items per page moved to left side */}
+              <div className="flex items-center gap-2">
+                <label className="text-sm text-gray-600 whitespace-nowrap">{t('dataTable.itemsPerPage')}:</label>
+                <select
+                  value={itemsPerPage}
+                  onChange={(e) => {
+                    setItemsPerPage(Number(e.target.value));
+                    setCurrentPage(1);
+                  }}
+                  className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-bold"
+                >
+                  <option value={5}>5</option>
+                  <option value={10}>10</option>
+                  <option value={25}>25</option>
+                  <option value={50}>50</option>
+                </select>
               </div>
             </div>
             
-            {/* Items per page */}
-            <div className="flex items-center gap-2">
-              <label className="text-sm text-gray-600">{t('dataTable.itemsPerPage')}:</label>
-              <select
-                value={itemsPerPage}
-                onChange={(e) => {
-                  setItemsPerPage(Number(e.target.value));
-                  setCurrentPage(1);
-                }}
-                className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 font-bold"
+            {/* Right Side: Action Buttons */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+              <button 
+                onClick={() => setIsModalOpen(true)}
+                className="bg-red-500 text-white px-3 lg:px-4 py-2 rounded-lg text-xs lg:text-sm hover:bg-red-600 flex items-center justify-center font-bold transition-colors"
               >
-                <option value={5}>5</option>
-                <option value={10}>10</option>
-                <option value={25}>25</option>
-                <option value={50}>50</option>
-              </select>
+                <UserPlus className="w-4 h-4 mr-2" />
+                <span className="hidden sm:inline">{t('header.addNewResident')}</span>
+                <span className="sm:hidden">Add</span>
+              </button>
+              <button className="bg-blue-500 text-white px-3 lg:px-4 py-2 rounded-lg text-xs lg:text-sm hover:bg-blue-600 flex items-center justify-center font-bold transition-colors">
+                <Printer className="w-4 h-4 mr-2" />
+                <span className="hidden sm:inline">{t('header.print')}</span>
+                <span className="sm:hidden">Print</span>
+              </button>
             </div>
           </div>
 
@@ -213,7 +233,9 @@ const DataTable = ({ data, loading = false }) => {
           </div>
         ) : currentData.length === 0 ? (
           <div className="text-center py-12">
-            <div className="text-gray-400 text-lg mb-2">📄</div>
+            <div className="text-gray-400 mb-2">
+              <FileText className="w-6 h-6 mx-auto" />
+            </div>
             <p className="text-gray-500">{filteredAndSortedData.length === 0 ? t('dataTable.noResults') : t('dataTable.noData')}</p>
           </div>
         ) : (
@@ -307,7 +329,7 @@ const DataTable = ({ data, loading = false }) => {
                     {row.date}
                   </td>
                   <td className="px-6 py-4 text-sm text-gray-500 font-bold border-r border-gray-200">
-                    {row.status === 'ከአለተደር' ? (
+                    {row.status === 'ከአስተዳደር' ? (
                       <span className="inline-flex px-2 py-1 text-xs font-bold rounded-full bg-gray-100 text-gray-800">
                         {row.status}
                       </span>
@@ -398,6 +420,12 @@ const DataTable = ({ data, loading = false }) => {
           </div>
         </div>
       )}
+      
+      {/* Add Resident Modal */}
+      <AddResidentModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+      />
     </div>
   );
 };

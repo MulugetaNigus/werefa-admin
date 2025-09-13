@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { UserPlus, Printer } from 'lucide-react';
+import { useLanguageContext } from '../contexts/LanguageContext';
 import AddResidentModal from './AddResidentModal';
 import LanguageToggle from './LanguageToggle';
 
 const Header = ({ activeTab = 'መተወደሪ ዕድሳት' }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { t } = useTranslation();
+  const { currentLanguage } = useLanguageContext();
 
   // Get dynamic title based on active tab
   const getHeaderTitle = () => {
@@ -56,21 +59,7 @@ const Header = ({ activeTab = 'መተወደሪ ዕድሳት' }) => {
           </div>
         </div> */}
         
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-2">
-          <button 
-            onClick={() => setIsModalOpen(true)}
-            className="bg-red-500 text-white px-3 lg:px-4 py-1.5 lg:py-2 rounded-lg text-xs lg:text-sm hover:bg-red-600 flex items-center justify-center font-bold"
-          >
-            <span className="mr-1 lg:mr-2">👤</span>
-            <span className="hidden sm:inline">{t('header.addNewResident')}</span>
-            <span className="sm:hidden">Add</span>
-          </button>
-          <button className="bg-blue-500 text-white px-3 lg:px-4 py-1.5 lg:py-2 rounded-lg text-xs lg:text-sm hover:bg-blue-600 flex items-center justify-center font-bold">
-            <span className="mr-1 lg:mr-2">🖨</span>
-            <span className="hidden sm:inline">{t('header.print')}</span>
-            <span className="sm:hidden">Print</span>
-          </button>
-        </div>
+        {/* Action buttons moved to DataTable component */}
       {/* </div> */}
       
       {/* Add Resident Modal */}
