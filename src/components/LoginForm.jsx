@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useLanguageContext } from '../contexts/LanguageContext';
 import LanguageToggle from './LanguageToggle';
 
 const LoginForm = () => {
@@ -8,6 +9,7 @@ const LoginForm = () => {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { currentLanguage } = useLanguageContext();
 
   const handleSubmit = (e) => {
     e.preventDefault();
