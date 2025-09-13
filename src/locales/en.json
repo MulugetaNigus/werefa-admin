@@ -34,7 +34,17 @@
     "searchPlaceholder": "Search...",
     "year": "Year",
     "addNewResident": "Add New Resident",
-    "print": "Print"
+    "print": "Print",
+    "titles": {
+      "ዳሽቦርድ": "Dashboard Management",
+      "መተወደሪ ዕድሳት": "Residence Renewal Management",
+      "አዲስ መተወደሪ": "New Residence Management",
+      "የሞተ ሰርፍት": "Death Certificate Management",
+      "ልደት ክርሰ": "Birth Certificate Management",
+      "የጋበን ሰርፍት": "Marriage Certificate Management",
+      "የአተከፍግፅ ወረልዎት": "Administrative Services Management",
+      "ማስተከክፅዎት": "Corrections Management"
+    }
   },
   "analytics": {
     "dashboard": "Dashboard",
@@ -55,7 +65,33 @@
     "action": "Action",
     "completed": "Completed",
     "all": "All Records",
-    "pending": "Pending"
+    "pending": "Pending",
+    "search": "Search...",
+    "searchPlaceholder": "Search by name, code, or date...",
+    "filterBy": "Filter by",
+    "sortBy": "Sort by",
+    "ascending": "Ascending",
+    "descending": "Descending",
+    "itemsPerPage": "Items per page",
+    "page": "Page",
+    "of": "of",
+    "showing": "Showing",
+    "to": "to",
+    "entries": "entries",
+    "noResults": "No results found",
+    "noData": "No data available",
+    "selectAll": "Select All",
+    "bulkActions": "Bulk Actions",
+    "deleteSelected": "Delete Selected",
+    "exportSelected": "Export Selected",
+    "markCompleted": "Mark as Completed",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Retry",
+    "firstPage": "First Page",
+    "previousPage": "Previous Page",
+    "nextPage": "Next Page",
+    "lastPage": "Last Page"
   },
   "modal": {
     "title": "Register New Werefa 4",

@@ -41,20 +41,6 @@ const LoginForm = () => {
               <circle cx="40" cy="30" r="10" fill="white" />
               <circle cx="40" cy="30" r="6" fill="#06b6d4" />
             </svg>
-            {/* Clock icon inside location pin */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mt-1">
-              <svg 
-                width="20" 
-                height="20" 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                stroke="#06b6d4" 
-                strokeWidth="2"
-              >
-                <circle cx="12" cy="12" r="10"/>
-                <polyline points="12,6 12,12 16,14"/>
-              </svg>
-            </div>
           </div>
         </div>
 

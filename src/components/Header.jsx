@@ -3,15 +3,24 @@ import { useTranslation } from 'react-i18next';
 import AddResidentModal from './AddResidentModal';
 import LanguageToggle from './LanguageToggle';
 
-const Header = () => {
+const Header = ({ activeTab = 'መተወደሪ ዕድሳት' }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { t } = useTranslation();
 
+  // Get dynamic title based on active tab
+  const getHeaderTitle = () => {
+    const titleKey = `header.titles.${activeTab}`;
+    const dynamicTitle = t(titleKey);
+    
+    // Fallback to default title if translation doesn't exist
+    return dynamicTitle !== titleKey ? dynamicTitle : t('header.title');
+  };
+
   return (
-    <header className="bg-white border-b border-gray-200 px-3 lg:px-4 xl:px-6 py-3 lg:py-4">
+    <header className="bg-white border-b border-gray-200 px-3 lg:px-4 xl:px-6 py-3 lg:py-4 font-bold">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-2 lg:space-x-3 xl:space-x-4">
-          <h1 className="text-blue-500 text-sm lg:text-base xl:text-lg">{t('header.title')}</h1>
+          <h1 className="text-blue-500 text-sm lg:text-base xl:text-lg font-bold">{getHeaderTitle()}</h1>
         </div>
         
         <div className="flex items-center space-x-2 lg:space-x-3 xl:space-x-4">
@@ -20,13 +29,13 @@ const Header = () => {
           
           {/* User Avatar */}
           <div className="w-8 h-8 lg:w-9 lg:h-9 xl:w-10 xl:h-10 bg-blue-500 rounded-full flex items-center justify-center">
-            <span className="text-white font-medium text-xs lg:text-sm">ወራ</span>
+            <span className="text-white font-bold text-xs lg:text-sm">ወራ</span>
           </div>
         </div>
       </div>
       
       {/* Search and Filter Bar */}
-      <div className="mt-3 lg:mt-4 flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-0">
+      {/* <div className="mt-3 lg:mt-4 flex flex-col lg:flex-row lg:items-center justify-between gap-3 lg:gap-0">
         <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 lg:space-x-4">
           <div className="relative">
             <input
@@ -45,24 +54,24 @@ const Header = () => {
               <option>▼</option>
             </select>
           </div>
-        </div>
+        </div> */}
         
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-2">
           <button 
             onClick={() => setIsModalOpen(true)}
-            className="bg-red-500 text-white px-3 lg:px-4 py-1.5 lg:py-2 rounded-lg text-xs lg:text-sm hover:bg-red-600 flex items-center justify-center"
+            className="bg-red-500 text-white px-3 lg:px-4 py-1.5 lg:py-2 rounded-lg text-xs lg:text-sm hover:bg-red-600 flex items-center justify-center font-bold"
           >
             <span className="mr-1 lg:mr-2">👤</span>
             <span className="hidden sm:inline">{t('header.addNewResident')}</span>
             <span className="sm:hidden">Add</span>
           </button>
-          <button className="bg-blue-500 text-white px-3 lg:px-4 py-1.5 lg:py-2 rounded-lg text-xs lg:text-sm hover:bg-blue-600 flex items-center justify-center">
+          <button className="bg-blue-500 text-white px-3 lg:px-4 py-1.5 lg:py-2 rounded-lg text-xs lg:text-sm hover:bg-blue-600 flex items-center justify-center font-bold">
             <span className="mr-1 lg:mr-2">🖨</span>
             <span className="hidden sm:inline">{t('header.print')}</span>
             <span className="sm:hidden">Print</span>
           </button>
         </div>
-      </div>
+      {/* </div> */}
       
       {/* Add Resident Modal */}
       <AddResidentModal 

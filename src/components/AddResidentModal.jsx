@@ -33,7 +33,7 @@ const AddResidentModal = ({ isOpen, onClose }) => {
         {/* Header */}
         <div className="px-3 lg:px-6 py-3 lg:py-4">
           <h2 className="text-lg lg:text-xl font-bold text-black text-center mb-2">{t('modal.title')}</h2>
-          <p className="text-xs lg:text-sm text-gray-600 text-center">
+          <p className="text-xs lg:text-sm text-red-600 text-center">
             {t('modal.subtitle')}
           </p>
         </div>
@@ -105,7 +105,7 @@ const AddResidentModal = ({ isOpen, onClose }) => {
           </div>
 
           {/* Address Field */}
-          <div className="mb-3 lg:mb-4">
+          {/* <div className="mb-3 lg:mb-4">
             <label className="block text-gray-700 text-xs lg:text-sm font-medium mb-2">
               {t('modal.residenceAddress')}
             </label>
@@ -115,7 +115,7 @@ const AddResidentModal = ({ isOpen, onClose }) => {
               onChange={(e) => handleInputChange('residenceAddress', e.target.value)}
               className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
-          </div>
+          </div> */}
 
           {/* Service Type and Date - Side by Side */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-4 mb-4 lg:mb-6">
@@ -128,10 +128,10 @@ const AddResidentModal = ({ isOpen, onClose }) => {
                 onChange={(e) => handleInputChange('serviceType', e.target.value)}
                 className="w-full px-2 lg:px-3 py-1.5 lg:py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
-                <option value="">{t('modal.selectService')}</option>
-                <option value="residence">{t('modal.residenceService')}</option>
-                <option value="renewal">{t('modal.renewalService')}</option>
-                <option value="certificate">{t('modal.certificateService')}</option>
+                <option value="">{t('modal.serviceType')}</option>
+                <option value="residence">{t('modal.newResidence')}</option>
+                <option value="renewal">{t('modal.residenceRenewal')}</option>
+                <option value="certificate">{t('modal.deathCertificate')}</option>
               </select>
             </div>
             <div>
@@ -159,7 +159,7 @@ const AddResidentModal = ({ isOpen, onClose }) => {
               onClick={handleSubmit}
               className="px-4 lg:px-6 py-2 text-sm bg-blue-500 text-white rounded-md hover:bg-blue-600"
             >
-              {t('modal.submit')}
+              {t('modal.register')}
             </button>
           </div>
         </div>

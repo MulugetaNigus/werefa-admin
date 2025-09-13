@@ -33,11 +33,11 @@ const Analytics = () => {
   ];
 
   const chartData = [
-    { month: 'ሰኔ', value: 25 },
-    { month: 'ማክሰኞ', value: 60 },
-    { month: 'ዕረቦ', value: 30 },
-    { month: 'ሐሙስ', value: 80 },
-    { month: 'ዓርብ', value: 65 }
+    { month: 'ሰኔ', value: 25, completed: 8, pending: 12, processing: 5 },
+    { month: 'ማክሰኞ', value: 60, completed: 22, pending: 28, processing: 10 },
+    { month: 'ዕረቦ', value: 30, completed: 12, pending: 15, processing: 3 },
+    { month: 'ሐሙስ', value: 80, completed: 35, pending: 30, processing: 15 },
+    { month: 'ዓርብ', value: 65, completed: 28, pending: 25, processing: 12 }
   ];
 
   const tableData = [
@@ -62,7 +62,7 @@ const Analytics = () => {
           <div key={index} className={`${stat.color} rounded-lg p-3 lg:p-4 xl:p-6 text-white`}>
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-white/80 text-xs lg:text-sm">{stat.title}</p>
+                <p className="text-white/80 text-xs lg:text-sm font-bold">{stat.title}</p>
                 <p className="text-xl lg:text-2xl xl:text-3xl font-bold mt-1 lg:mt-2">{stat.value}</p>
               </div>
               <div className="text-xl lg:text-2xl xl:text-3xl opacity-80">
@@ -74,58 +74,199 @@ const Analytics = () => {
       </div>
 
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 lg:gap-6 xl:gap-8">
-        {/* Chart Section */}
+        {/* Modern Donut Chart Section */}
         <div className="bg-white rounded-lg shadow-sm p-3 lg:p-4 xl:p-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">በዓመት ሪፖርት</h3>
-          <div className="relative h-64">
-            <svg className="w-full h-full" viewBox="0 0 400 200">
-              {/* Grid lines */}
-              <defs>
-                <pattern id="grid" width="40" height="20" patternUnits="userSpaceOnUse">
-                  <path d="M 40 0 L 0 0 0 20" fill="none" stroke="#f0f0f0" strokeWidth="1"/>
-                </pattern>
-              </defs>
-              <rect width="100%" height="100%" fill="url(#grid)" />
+          <div className="flex items-center justify-between mb-6">
+            <h3 className="text-lg font-bold text-gray-900">በዚህ ሳምንት</h3>
+            <div className="text-xs text-gray-500 font-bold">ጠቅላላ ሪከርዶች ስርጭት</div>
+          </div>
+          
+          <div className="flex flex-col lg:flex-row items-center justify-center space-y-6 lg:space-y-0 lg:space-x-8">
+            {/* Donut Chart */}
+            <div className="relative">
+              <svg width="240" height="240" viewBox="0 0 240 240" className="transform -rotate-90">
+                <defs>
+                  <linearGradient id="completedGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#3b82f6" />
+                    <stop offset="100%" stopColor="#1d4ed8" />
+                  </linearGradient>
+                  <linearGradient id="pendingGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#eab308" />
+                    <stop offset="100%" stopColor="#ca8a04" />
+                  </linearGradient>
+                  <linearGradient id="processingGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#a855f7" />
+                    <stop offset="100%" stopColor="#7c3aed" />
+                  </linearGradient>
+                  <filter id="shadow">
+                    <feDropShadow dx="0" dy="2" stdDeviation="4" floodOpacity="0.1"/>
+                  </filter>
+                </defs>
+                
+                {(() => {
+                  const totalCompleted = chartData.reduce((sum, data) => sum + data.completed, 0);
+                  const totalPending = chartData.reduce((sum, data) => sum + data.pending, 0);
+                  const totalProcessing = chartData.reduce((sum, data) => sum + data.processing, 0);
+                  const grandTotal = totalCompleted + totalPending + totalProcessing;
+                  
+                  const completedPercentage = (totalCompleted / grandTotal) * 100;
+                  const pendingPercentage = (totalPending / grandTotal) * 100;
+                  const processingPercentage = (totalProcessing / grandTotal) * 100;
+                  
+                  const radius = 80;
+                  const strokeWidth = 24;
+                  const circumference = 2 * Math.PI * radius;
+                  
+                  const completedLength = (completedPercentage / 100) * circumference;
+                  const pendingLength = (pendingPercentage / 100) * circumference;
+                  const processingLength = (processingPercentage / 100) * circumference;
+                  
+                  return (
+                    <g>
+                      {/* Background circle */}
+                      <circle
+                        cx="120"
+                        cy="120"
+                        r={radius}
+                        fill="none"
+                        stroke="#f3f4f6"
+                        strokeWidth={strokeWidth}
+                      />
+                      
+                      {/* Completed segment */}
+                      <circle
+                        cx="120"
+                        cy="120"
+                        r={radius}
+                        fill="none"
+                        stroke="url(#completedGradient)"
+                        strokeWidth={strokeWidth}
+                        strokeDasharray={`${completedLength} ${circumference}`}
+                        strokeDashoffset="0"
+                        strokeLinecap="round"
+                        filter="url(#shadow)"
+                        className="transition-all duration-700 hover:stroke-[28]"
+                      />
+                      
+                      {/* Pending segment */}
+                      <circle
+                        cx="120"
+                        cy="120"
+                        r={radius}
+                        fill="none"
+                        stroke="url(#pendingGradient)"
+                        strokeWidth={strokeWidth}
+                        strokeDasharray={`${pendingLength} ${circumference}`}
+                        strokeDashoffset={-completedLength}
+                        strokeLinecap="round"
+                        filter="url(#shadow)"
+                        className="transition-all duration-700 hover:stroke-[28]"
+                      />
+                      
+                      {/* Processing segment */}
+                      <circle
+                        cx="120"
+                        cy="120"
+                        r={radius}
+                        fill="none"
+                        stroke="url(#processingGradient)"
+                        strokeWidth={strokeWidth}
+                        strokeDasharray={`${processingLength} ${circumference}`}
+                        strokeDashoffset={-(completedLength + pendingLength)}
+                        strokeLinecap="round"
+                        filter="url(#shadow)"
+                        className="transition-all duration-700 hover:stroke-[28]"
+                      />
+                    </g>
+                  );
+                })()}
+              </svg>
               
-              {/* Y-axis labels */}
-              <text x="20" y="20" className="text-xs fill-gray-500">100</text>
-              <text x="20" y="120" className="text-xs fill-gray-500">50</text>
-              <text x="20" y="190" className="text-xs fill-gray-500">10</text>
+              {/* Center content */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center">
+                <div className="text-3xl font-bold text-gray-900">
+                  {chartData.reduce((sum, data) => sum + data.value, 0)}
+                </div>
+                <div className="text-sm text-gray-500 mt-1 font-bold">ጠቅላላ ሪከርዶች</div>
+              </div>
+            </div>
+            
+            {/* Legend and Statistics */}
+            <div className="space-y-4">
+              {(() => {
+                const totalCompleted = chartData.reduce((sum, data) => sum + data.completed, 0);
+                const totalPending = chartData.reduce((sum, data) => sum + data.pending, 0);
+                const totalProcessing = chartData.reduce((sum, data) => sum + data.processing, 0);
+                const grandTotal = totalCompleted + totalPending + totalProcessing;
+                
+                const stats = [
+                  {
+                    label: 'ተከፍላል',
+                    value: totalCompleted,
+                    percentage: ((totalCompleted / grandTotal) * 100).toFixed(1),
+                    color: 'bg-blue-500',
+                    textColor: 'text-blue-600',
+                    bgColor: 'bg-blue-50'
+                  },
+                  {
+                    label: 'ነቅ',
+                    value: totalPending,
+                    percentage: ((totalPending / grandTotal) * 100).toFixed(1),
+                    color: 'bg-yellow-500',
+                    textColor: 'text-yellow-600',
+                    bgColor: 'bg-yellow-50'
+                  },
+                  {
+                    label: 'ተጨማሪ',
+                    value: totalProcessing,
+                    percentage: ((totalProcessing / grandTotal) * 100).toFixed(1),
+                    color: 'bg-purple-500',
+                    textColor: 'text-purple-600',
+                    bgColor: 'bg-purple-50'
+                  }
+                ];
+                
+                return stats.map((stat, index) => (
+                  <div key={index} className={`${stat.bgColor} rounded-lg p-4 transition-all duration-200 hover:shadow-md cursor-pointer group`}>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center space-x-3">
+                        <div className={`w-4 h-4 ${stat.color} rounded-full`}></div>
+                        <span className="text-sm font-bold text-gray-700">{stat.label}</span>
+                      </div>
+                      <div className="text-right">
+                        <div className={`text-lg font-bold ${stat.textColor}`}>{stat.value}</div>
+                        <div className="text-xs text-gray-500">{stat.percentage}%</div>
+                      </div>
+                    </div>
+                    
+                    {/* Progress bar */}
+                    <div className="mt-3 bg-white bg-opacity-50 rounded-full h-2 overflow-hidden">
+                      <div 
+                        className={`h-full ${stat.color} transition-all duration-700 group-hover:animate-pulse`}
+                        style={{ width: `${stat.percentage}%` }}
+                      ></div>
+                    </div>
+                  </div>
+                ));
+              })()}
               
-              {/* Chart line */}
-              <path
-                d="M 60 160 Q 120 100 160 120 Q 200 140 240 80 Q 280 60 340 70"
-                fill="none"
-                stroke="#3b82f6"
-                strokeWidth="3"
-                strokeLinecap="round"
-              />
-              
-              {/* Data points */}
-              {chartData.map((point, index) => (
-                <g key={index}>
-                  <circle
-                    cx={60 + index * 70}
-                    cy={200 - (point.value * 1.8)}
-                    r="4"
-                    fill="#3b82f6"
-                  />
-                </g>
-              ))}
-              
-              {/* X-axis labels */}
-              {chartData.map((point, index) => (
-                <text
-                  key={index}
-                  x={60 + index * 70}
-                  y="195"
-                  textAnchor="middle"
-                  className="text-xs fill-gray-500"
-                >
-                  {point.month}
-                </text>
-              ))}
-            </svg>
+              {/* Monthly Breakdown */}
+              <div className="mt-6 pt-4 border-t border-gray-100">
+                <h4 className="text-sm font-bold text-gray-700 mb-3">ወርሃዊ ትንተና</h4>
+                <div className="space-y-2">
+                  {chartData.map((data, index) => (
+                    <div key={index} className="flex items-center justify-between text-xs">
+                      <span className="text-gray-600 font-bold">{data.month}</span>
+                      <div className="flex space-x-2">
+                        <span className="text-blue-600 font-bold">{data.completed}</span>
+                        <span className="text-yellow-600 font-bold">{data.pending}</span>
+                        <span className="text-purple-600 font-bold">{data.processing}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
